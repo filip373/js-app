@@ -7,11 +7,7 @@ $(document).ready(function() {
 		clearGrid();
 		createGrid(side);
 	});
-	$('.square').hover(function() {
-		$(this).animate({backgroundColor: '#CD3333'}, 'fast');
-	}, function() {
-		$(this).animate({backgroundColor: 'white'}, 'fast');
-	});
+
 });
 
 function createGrid(side) {
@@ -30,19 +26,15 @@ function createGrid(side) {
 
 	var squareWidth = width.substring(0, width.length - 2) / side;
 	var squareHeight = height.substring(0, height.length - 2) / side;
-	$('.square').outerWidth(squareWidth, true).outerHeight(squareHeight, true);
+	$('.square')
+		.outerWidth(squareWidth, true).outerHeight(squareHeight, true)
+		.hover(function() {
+			$(this).animate({backgroundColor: '#CD3333'}, 'fast');
+		}, function() {
+			$(this).animate({backgroundColor: 'white'}, 'fast');
+		});
 }
 
 function clearGrid() {
 	$('.row').remove();
 }
-
-// $(document).ready(function() {
-// 	$(container).append('<table></table>');
-// 	for (var i = 0; i < 4; i++) {
-// 		$('table').append("<tr></tr>");
-// 		for (var j = 0; j < 4; j++) {
-// 			$('tr:nth-of-type(' + (i + 1) + ')').append("<td class='square'></td>");
-// 		}
-// 	}
-// });
