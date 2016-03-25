@@ -1,12 +1,20 @@
 .square {
 	height: 100px;
 	width: 100px;
-	background-color: rgb(122, 30, 140);
 	margin: 10px 10px;
 	/*float: left;*/
+	background-color: rgb(172, 80, 190);
 	display: inline-block;
 }
 
+/*.square:hover {
+	background-color: rgb(172, 80, 190);
+}*/
+
 .row {
 	/*clear: left;*/
+}
+
+.hovered {
+	background-color: rgb(122, 30, 140);
 }

@@ -5,6 +5,12 @@ $(document).ready(function() {
 			$('.row:nth-of-type(' + (i + 1) + ')').append("<div class='square'></div>");
 		}
 	}
+
+	$('.square').hover(function() {
+		$(this).fadeTo('fast', 0.5);
+	}, function() {
+		$(this).fadeTo('fast', 1);
+	});
 });
 
 // $(document).ready(function() {
