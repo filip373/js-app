@@ -1,3 +1,5 @@
+var colors;
+
 $(document).ready(function() {
 	
 	createGrid(6);
@@ -26,15 +28,41 @@ function createGrid(side) {
 
 	var squareWidth = width.substring(0, width.length - 2) / side;
 	var squareHeight = height.substring(0, height.length - 2) / side;
+
+	colors = new Array(side * side);
+	for (var i = 0; i < colors.length; i++) {
+		colors[i] = 0;
+	}
 	$('.square')
 		.outerWidth(squareWidth, true).outerHeight(squareHeight, true)
-		.hover(function() {
-			$(this).animate({backgroundColor: '#CD3333'}, 'fast');
-		}, function() {
-			$(this).animate({backgroundColor: 'white'}, 'fast');
+		.mouseenter(function() {
+			mouseEntered($(this));
 		});
+}
+
+function mouseEntered(square) {
+	var index = square.index('.square');
+	if (colors[index] === 0) {			// white -> set random color
+		colors[index] = 10;
+		square.animate({backgroundColor: randomColor()}, 'fast');
+	} else {
+		colors[index] = colors[index] - 1; // else -> decrease color
+		square.fadeTo('fast', colors[index] / 10);
+	}	
 }
 
 function clearGrid() {
 	$('.row').remove();
+}
+
+function randomColor() {
+	var color = '';
+	for (var i = 0; i < 3; i++) {
+		color += randomTo256().toString(16);
+	}
+	return '#' + color;
+}
+
+function randomTo256() {
+	return Math.floor(Math.random() * 256);
 }
