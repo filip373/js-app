@@ -7,11 +7,11 @@ $(document).ready(function() {
 		clearGrid();
 		createGrid(side);
 	});
-	// $('.square').hover(function() {
-	// 	$(this).fadeTo('0.1s', 0.5);
-	// }, function() {
-	// 	$(this).fadeTo('3.0s', 1);
-	// });
+	$('.square').hover(function() {
+		$(this).animate({backgroundColor: '#CD3333'}, 'fast');
+	}, function() {
+		$(this).animate({backgroundColor: 'white'}, 'fast');
+	});
 });
 
 function createGrid(side) {
